@@ -1,6 +1,7 @@
 import React from "react";
-import Main from "../Main";
+import HomePage from "../HomePage";
 const App: React.FC = () => {
-  return <Main />;
+  const unused = "something";
+  return <HomePage />;
 };
 export default App;

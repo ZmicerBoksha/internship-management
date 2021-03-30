@@ -3,6 +3,8 @@ import path from "path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import { webpack, Configuration as WebpackConfiguration } from "webpack";
 import { Configuration as WebpackDevServerConfiguration } from "webpack-dev-server";
+import ForkTsCheckerWebpackPlugin from "fork-ts-checker-webpack-plugin";
+import ESLintPlugin from "eslint-webpack-plugin";
 
 interface Configuration extends WebpackConfiguration {
   devServer?: WebpackDevServerConfiguration;
@@ -30,6 +32,22 @@ const config: Configuration = {
           },
         },
       },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        use: {
+          loader: "file-loader",
+          options: {
+            outputPath: "./src/assets/images",
+            name: "[name].[ext]",
+          },
+        },
+      },
+      {
+        test: /\.html$/,
+        use: {
+          loader: "html-loader",
+        },
+      },
     ],
   },
   resolve: {
@@ -38,6 +56,12 @@ const config: Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       template: "./public/index.html",
+    }),
+    new ForkTsCheckerWebpackPlugin({
+      async: false,
+    }),
+    new ESLintPlugin({
+      extensions: ["js", "jsx", "ts", "tsx"],
     }),
     // new webpack.HotModuleReplacementPlugin(),
   ],
