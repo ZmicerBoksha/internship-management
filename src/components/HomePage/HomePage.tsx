@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "../shared/Navbar";
 import TopPage from "../shared/TopPage";
 import PageDivider from "../shared/PageDivider";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
