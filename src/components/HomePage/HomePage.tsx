@@ -5,6 +5,7 @@ import PageDivider from "../shared/PageDivider";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { classNamesFunction } from "@uifabric/utilities";
 import Trainings from "./Trainings";
+import banner from "../../assets/images/homebg.png";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,9 +24,10 @@ const HomePage = () => {
           title="Choose a Traning that suits you best!"
           subTitle="Recruitment for JavaScript Internship"
           info="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          imageUrl="homebg.png"
+          imageUrl={banner}
         />
       </div>
+
       <div>
         <PageDivider title="Trainings" />
         <Trainings />

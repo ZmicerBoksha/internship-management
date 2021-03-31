@@ -38,7 +38,7 @@ const Trainings = () => {
             <Typography className={classes.title} variant="h5" component="h1">
               Front-End Developer
             </Typography>
-            <ul>
+            <ul style={{ listStyleType: "none", padding: 0 }}>
               <li>
                 <Typography
                   className={classes.subTitle}

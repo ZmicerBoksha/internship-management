@@ -34,12 +34,10 @@ const config: Configuration = {
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
-        use: {
-          loader: "file-loader",
-          options: {
-            outputPath: "./src/assets/images",
-            name: "[name].[ext]",
-          },
+        loader: "file-loader",
+        options: {
+          outputPath: "./src/assets/images",
+          name: "[name].[ext]",
         },
       },
       {

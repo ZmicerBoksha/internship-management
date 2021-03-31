@@ -40,7 +40,7 @@ interface TopPageProps {
   title: string;
   subTitle: string;
   info: string;
-  imageUrl: string;
+  imageUrl: any;
 }
 const TopPage = (props: TopPageProps) => {
   const classes = useStyles();
