@@ -6,6 +6,7 @@ import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { classNamesFunction } from "@uifabric/utilities";
 import Trainings from "./Trainings";
 import banner from "../../assets/images/homebg.png";
+import { Button } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

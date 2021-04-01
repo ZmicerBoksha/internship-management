@@ -61,9 +61,12 @@ const TopPage = (props: TopPageProps) => {
           </Typography>
         </Grid>
         <Grid item xs={7}>
-          <>
-            <img alt="banner" src={imageUrl} />
-          </>
+          <img
+            alt="banner"
+            src={imageUrl}
+            width="100%"
+            style={{ objectFit: "contain", height: "max-content" }}
+          />
         </Grid>
       </Grid>
     </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Paper, Typography } from "@material-ui/core";
+import { Button, Grid, Paper, Typography } from "@material-ui/core";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -49,6 +49,7 @@ const Trainings = () => {
                 </Typography>
               </li>
             </ul>
+            <Button>Register</Button>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={4}>
