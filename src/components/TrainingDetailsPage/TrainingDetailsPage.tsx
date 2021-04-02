@@ -1,10 +1,11 @@
 import React from "react";
-import TopPage from "../shared/TopPage";
-import PageDivider from "../shared/PageDivider";
+
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import Trainings from "./Trainings";
-import banner from "../../assets/images/homebg.png";
-import { Button } from "@material-ui/core";
+import TopPage from "../shared/TopPage";
+import banner2 from "../../assets/images/secondbg.png";
+import PageDivider from "../shared/PageDivider";
+import TrainingDetails from "./TrainingDetails/TrainingDetails";
+import TrainingForm from "./TrainingForm";
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -13,25 +14,26 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
-const HomePage = () => {
+const TrainingDetailsPage = () => {
   const classes = useStyles();
   return (
     <>
       <div className={classes.root}>
         <TopPage
-          title="Choose a Traning that suits you best!"
-          subTitle="Recruitment for JavaScript Internship"
+          title="JavaScript Internship"
+          subTitle="Start NOW"
           info="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          imageUrl={banner}
+          imageUrl={banner2}
         />
       </div>
-
       <div>
-        <PageDivider title="Trainings" />
-        <Trainings />
+        <PageDivider title="Training Details" />
+        <TrainingDetails />
+
+        <TrainingForm />
       </div>
     </>
   );
 };
 
-export default HomePage;
+export default TrainingDetailsPage;

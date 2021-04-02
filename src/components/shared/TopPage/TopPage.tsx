@@ -12,6 +12,7 @@ const useStyles = makeStyles((theme: Theme) =>
       textAlign: "center",
       color: "#406370",
       marginTop: theme.spacing(5),
+      marginBottom: "5%",
       margin: "auto",
       fontFamily: "BlinkMacSystemFont",
       alignItems: "center",
@@ -19,7 +20,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     subTitle: {
       maxWidth: 400,
-      marginTop: theme.spacing(5),
+      marginTop: "30%",
       margin: "auto",
       fontFamily: "BlinkMacSystemFont",
       color: "#406370",
@@ -52,7 +53,7 @@ const TopPage = (props: TopPageProps) => {
       </Typography>
 
       <Grid container>
-        <Grid item xs={5}>
+        <Grid item xs={12} sm={5}>
           <Typography className={classes.subTitle} variant="h3" component="h1">
             {subTitle}
           </Typography>
@@ -60,7 +61,7 @@ const TopPage = (props: TopPageProps) => {
             {info}
           </Typography>
         </Grid>
-        <Grid item xs={7}>
+        <Grid item xs={12} sm={5}>
           <img
             alt="banner"
             src={imageUrl}
