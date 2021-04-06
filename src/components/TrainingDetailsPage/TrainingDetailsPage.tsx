@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 );
+
 const TrainingDetailsPage = () => {
   const classes = useStyles();
   return (
