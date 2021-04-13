@@ -1,21 +1,21 @@
-import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import React from 'react'
+import {Redirect, Route, Switch} from 'react-router-dom'
 
-import HomePage from "../HomePage";
-import Navbar from "../shared/Navbar";
-import TrainingDetailsPage from "../TrainingDetailsPage";
-import { configure } from "axios-hooks";
-import LRU from "lru-cache";
-import Axios from "axios";
+import HomePage from '../HomePage'
+import Navbar from '../shared/Navbar'
+import TrainingDetailsPage from '../TrainingDetailsPage'
+import {configure} from 'axios-hooks'
+import LRU from 'lru-cache'
+import Axios from 'axios'
 
 const axios = Axios.create({
-  baseURL: "https://reqres.in/api",
-});
-const cache = new LRU({ max: 20 });
+  baseURL: 'https://reqres.in/api',
+})
+const cache = new LRU({max: 20})
 
-configure({ axios, cache });
+configure({axios, cache})
 const App: React.FC = () => {
-  const unused = "something";
+  const unused = 'something'
   return (
     <>
       <Navbar />
@@ -27,6 +27,6 @@ const App: React.FC = () => {
         ></Route>
       </Switch>
     </>
-  );
-};
-export default App;
+  )
+}
+export default App

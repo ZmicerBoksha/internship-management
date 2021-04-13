@@ -1,45 +1,45 @@
-import React from "react";
-import { Button, Grid, Paper, Typography } from "@material-ui/core";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import useAxios from "axios-hooks";
+import React from 'react'
+import {Button, Grid, Paper, Typography} from '@material-ui/core'
+import {makeStyles, Theme, createStyles} from '@material-ui/core/styles'
+import useAxios from 'axios-hooks'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      margin: "10%",
+      margin: '10%',
       flexGrow: 1,
     },
     paper: {
-      textAlign: "center",
-      backgroundColor: "#8ad6f2",
-      height: "300px",
+      textAlign: 'center',
+      backgroundColor: '#8ad6f2',
+      height: '300px',
     },
     title: {
-      textAlign: "center",
-      color: "#1e5a70",
-      paddingTop: "5%",
-      marginBottom: "5%",
-      fontFamily: "BlinkMacSystemFont",
+      textAlign: 'center',
+      color: '#1e5a70',
+      paddingTop: '5%',
+      marginBottom: '5%',
+      fontFamily: 'BlinkMacSystemFont',
     },
     subTitle: {
-      textAlign: "center",
-      color: "white",
-      fontFamily: "BlinkMacSystemFont",
+      textAlign: 'center',
+      color: 'white',
+      fontFamily: 'BlinkMacSystemFont',
     },
   })
-);
+)
 interface DetailType {
-  title: string;
-  location: string;
-  startDate: string;
-  duration: number;
-  id: number;
-  email: string;
-  first_name: string;
-  last_name: string;
+  title: string
+  location: string
+  startDate: string
+  duration: number
+  id: number
+  email: string
+  first_name: string
+  last_name: string
 }
 interface IData {
-  data: DetailType[];
+  data: DetailType[]
 }
 // const myData: IData = {
 //   data: [
@@ -67,15 +67,15 @@ interface IData {
 //   ],
 // };
 const Trainings = () => {
-  const classes = useStyles();
-  const [{ data, loading, error }, refetch] = useAxios("/users");
+  const classes = useStyles()
+  const [{data, loading, error}, refetch] = useAxios('/users')
 
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
         {data &&
           data.data.map((detail: DetailType) => {
-            console.log("aaaaaaaaaaaaaaaaa" + data);
+            console.log('aaaaaaaaaaaaaaaaa' + data)
             return (
               <Grid key={detail.id} item xs={12} sm={4}>
                 <Paper className={classes.paper}>
@@ -86,7 +86,7 @@ const Trainings = () => {
                   >
                     {detail.first_name}
                   </Typography>
-                  <ul style={{ listStyleType: "none", padding: 0 }}>
+                  <ul style={{listStyleType: 'none', padding: 0}}>
                     <li>
                       <Typography
                         className={classes.subTitle}
@@ -97,10 +97,10 @@ const Trainings = () => {
                       </Typography>
                     </li>
                   </ul>
-                  <Button href={"/details"}>Register</Button>
+                  <Button href={'/details'}>Register</Button>
                 </Paper>
               </Grid>
-            );
+            )
           })}
 
         {/* <Grid item xs={12} sm={4}>
@@ -141,7 +141,7 @@ const Trainings = () => {
         </Grid> */}
       </Grid>
     </div>
-  );
-};
+  )
+}
 
-export default Trainings;
+export default Trainings

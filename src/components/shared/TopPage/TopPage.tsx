@@ -1,45 +1,45 @@
-import React from "react";
-import { Button, Grid, Typography } from "@material-ui/core";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
+import React from 'react'
+import {Button, Grid, Typography} from '@material-ui/core'
+import {makeStyles, Theme, createStyles} from '@material-ui/core/styles'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      width: "100%",
+      width: '100%',
     },
     title: {
       maxWidth: 800,
-      textAlign: "center",
-      color: "#406370",
+      textAlign: 'center',
+      color: '#406370',
       marginTop: theme.spacing(5),
-      marginBottom: "2%",
-      margin: "auto",
-      fontFamily: "BlinkMacSystemFont",
+      marginBottom: '2%',
+      margin: 'auto',
+      fontFamily: 'BlinkMacSystemFont',
     },
     subTitle: {
       maxWidth: 400,
-      marginTop: "10%",
-      margin: "auto",
-      fontFamily: "BlinkMacSystemFont",
-      color: "#406370",
+      marginTop: '10%',
+      margin: 'auto',
+      fontFamily: 'BlinkMacSystemFont',
+      color: '#406370',
     },
     info: {
       maxWidth: 400,
       marginTop: theme.spacing(2),
-      margin: "auto",
-      fontFamily: "BlinkMacSystemFont",
+      margin: 'auto',
+      fontFamily: 'BlinkMacSystemFont',
     },
   })
-);
+)
 interface TopPageProps {
-  title: string;
-  subTitle: string;
-  info: string;
-  imageUrl: any;
+  title: string
+  subTitle: string
+  info: string
+  imageUrl: any
 }
 const TopPage = (props: TopPageProps) => {
-  const classes = useStyles();
-  const { title, subTitle, info, imageUrl } = props;
+  const classes = useStyles()
+  const {title, subTitle, info, imageUrl} = props
   return (
     <div className={classes.root}>
       <Typography className={classes.title} variant="h2" component="h1">
@@ -59,7 +59,7 @@ const TopPage = (props: TopPageProps) => {
             color="primary"
             variant="contained"
             style={{
-              margin: "auto",
+              margin: 'auto',
             }}
           >
             Read More...
@@ -70,11 +70,11 @@ const TopPage = (props: TopPageProps) => {
             alt="banner"
             src={imageUrl}
             width="100%"
-            style={{ objectFit: "contain", height: "max-content" }}
+            style={{objectFit: 'contain', height: 'max-content'}}
           />
         </Grid>
       </Grid>
     </div>
-  );
-};
-export default TopPage;
+  )
+}
+export default TopPage

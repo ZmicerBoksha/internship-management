@@ -1,22 +1,22 @@
-import React from "react";
+import React from 'react'
 
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import TopPage from "../shared/TopPage";
-import banner2 from "../../assets/images/secondbg.png";
-import PageDivider from "../shared/PageDivider";
-import TrainingDetails from "./TrainingDetails/TrainingDetails";
-import TrainingForm from "./TrainingForm";
+import {makeStyles, Theme, createStyles} from '@material-ui/core/styles'
+import TopPage from '../shared/TopPage'
+import banner2 from '../../assets/images/secondbg.png'
+import PageDivider from '../shared/PageDivider'
+import TrainingDetails from './TrainingDetails/TrainingDetails'
+import TrainingForm from './TrainingForm'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      height: "100vh",
+      height: '100vh',
     },
   })
-);
+)
 
 const TrainingDetailsPage = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <>
       <div className={classes.root}>
@@ -34,7 +34,7 @@ const TrainingDetailsPage = () => {
         <TrainingForm />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default TrainingDetailsPage;
+export default TrainingDetailsPage

@@ -1,20 +1,20 @@
-import React from "react";
-import TopPage from "../shared/TopPage";
-import PageDivider from "../shared/PageDivider";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
-import Trainings from "./Trainings";
-import banner from "../../assets/images/homebg.png";
-import { Button } from "@material-ui/core";
+import React from 'react'
+import TopPage from '../shared/TopPage'
+import PageDivider from '../shared/PageDivider'
+import {makeStyles, Theme, createStyles} from '@material-ui/core/styles'
+import Trainings from './Trainings'
+import banner from '../../assets/images/homebg.png'
+import {Button} from '@material-ui/core'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
-      height: "100vh",
+      height: '100vh',
     },
   })
-);
+)
 const HomePage = () => {
-  const classes = useStyles();
+  const classes = useStyles()
   return (
     <>
       <div className={classes.root}>
@@ -31,7 +31,7 @@ const HomePage = () => {
         <Trainings />
       </div>
     </>
-  );
-};
+  )
+}
 
-export default HomePage;
+export default HomePage

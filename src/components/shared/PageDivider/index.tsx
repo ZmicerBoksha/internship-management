@@ -1,1 +1,1 @@
-export { default } from "./PageDivider";
+export {default} from './PageDivider'
