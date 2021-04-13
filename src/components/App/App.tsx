@@ -20,11 +20,8 @@ const App: React.FC = () => {
     <>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={() => <HomePage />}></Route>
-        <Route
-          path="/details"
-          component={() => <TrainingDetailsPage />}
-        ></Route>
+        <Route exact path="/" component={HomePage}></Route>
+        <Route path="/details" component={TrainingDetailsPage}></Route>
       </Switch>
     </>
   )

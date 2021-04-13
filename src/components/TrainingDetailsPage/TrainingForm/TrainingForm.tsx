@@ -84,7 +84,7 @@ const TrainingForm = () => {
             />
             {errors.firstName && (
               <Typography component="span" color="error">
-                {'Please fill the form'}
+                Please fill the form
               </Typography>
             )}
           </Grid>
@@ -99,7 +99,7 @@ const TrainingForm = () => {
             />
             {errors.lastName && (
               <Typography component="span" color="error">
-                {'Please fill the form'}
+                Please fill the form
               </Typography>
             )}
           </Grid>
@@ -114,7 +114,7 @@ const TrainingForm = () => {
             />
             {errors.patronymic && (
               <Typography component="span" color="error">
-                {'Please fill the form'}
+                Please fill the form
               </Typography>
             )}
           </Grid>
@@ -131,7 +131,7 @@ const TrainingForm = () => {
             />
             {errors.email && (
               <Typography component="span" color="error">
-                {'Please fill the form'}
+                Please fill the form
               </Typography>
             )}
           </Grid>
@@ -150,7 +150,7 @@ const TrainingForm = () => {
             </InputMask>
             {errors.phoneNumber && (
               <Typography component="span" color="error">
-                {'Please fill the form'}
+                Please fill the form
               </Typography>
             )}
           </Grid>
@@ -165,7 +165,7 @@ const TrainingForm = () => {
             />
             {errors.skype && (
               <Typography component="span" color="error">
-                {'Please fill the form'}
+                Please fill the form
               </Typography>
             )}
           </Grid>
@@ -180,7 +180,7 @@ const TrainingForm = () => {
             />
             {errors.country && (
               <Typography component="span" color="error">
-                {'Please fill the form'}
+                Please fill the form
               </Typography>
             )}
           </Grid>
@@ -195,7 +195,7 @@ const TrainingForm = () => {
             />
             {errors.city && (
               <Typography component="span" color="error">
-                {'Please fill the form'}
+                Please fill the form
               </Typography>
             )}
           </Grid>
@@ -210,7 +210,7 @@ const TrainingForm = () => {
             />
             {errors.technology && (
               <Typography component="span" color="error">
-                {'Please fill the form'}
+                Please fill the form
               </Typography>
             )}
           </Grid>
@@ -225,7 +225,7 @@ const TrainingForm = () => {
             />
             {errors.engLevel && (
               <Typography component="span" color="error">
-                {'Please fill the form'}
+                Please fill the form
               </Typography>
             )}
           </Grid>
@@ -240,7 +240,7 @@ const TrainingForm = () => {
             />
             {errors.degree && (
               <Typography component="span" color="error">
-                {'Please fill the form'}
+                Please fill the form
               </Typography>
             )}
           </Grid>
@@ -267,7 +267,7 @@ const TrainingForm = () => {
             />
             {errors.graduationDate && (
               <Typography component="span" color="error">
-                {'Please fill the form'}
+                Please fill the form
               </Typography>
             )}
           </Grid>
@@ -282,7 +282,7 @@ const TrainingForm = () => {
             />
             {errors.experience && (
               <Typography component="span" color="error">
-                {'Please fill the form'}
+                Please fill the form
               </Typography>
             )}
           </Grid>
