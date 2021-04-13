@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { Controller, useForm } from "react-hook-form";
+import InputMask from "react-input-mask";
 import {
   Button,
   Grid,
@@ -9,7 +10,6 @@ import {
   useTheme,
 } from "@material-ui/core";
 import { KeyboardDatePicker } from "@material-ui/pickers";
-
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { DateFormat, DateFormatDot } from "../../constants/DateFormats";
 import { format, isValid } from "date-fns";
@@ -17,6 +17,9 @@ import { format, isValid } from "date-fns";
 interface IFormInput {
   firstName: string;
   lastName: string;
+  patronymic: string;
+  phoneNumber: string;
+  birthday: string;
   email: string;
   skype: string;
   country: string;
@@ -43,6 +46,14 @@ const useStyles = makeStyles((theme: Theme) =>
     form: {
       padding: "5% ",
     },
+    button: {
+      width: "50%",
+      backgroundColor: "#1e5a70",
+      color: "white",
+      "&:hover": {
+        backgroundColor: "#173c4a",
+      },
+    },
   })
 );
 const TrainingForm = () => {
@@ -57,6 +68,7 @@ const TrainingForm = () => {
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
+
   return (
     <div
       style={matches ? { margin: "5% 15% 2% 15%" } : { margin: "5% 1% 2% 1%" }}
@@ -100,13 +112,49 @@ const TrainingForm = () => {
           <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
+              label="Patronymic"
+              name="patronymic"
+              inputRef={register({ required: true })}
+              variant="outlined"
+              fullWidth
+            />
+            {errors.patronymic && (
+              <Typography component="span" color="error">
+                {"Please fill the form"}
+              </Typography>
+            )}
+          </Grid>
+
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="outlined-basic"
               label="Email"
               name="email"
+              type="email"
               inputRef={register({ required: true })}
               variant="outlined"
               fullWidth
             />
             {errors.email && (
+              <Typography component="span" color="error">
+                {"Please fill the form"}
+              </Typography>
+            )}
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <InputMask mask="(\9\9\8) 99 999-99-99">
+              {() => (
+                <TextField
+                  fullWidth
+                  name="phoneNumber"
+                  inputRef={register({ required: true })}
+                  id="outlined"
+                  label={"PhoneNumber"}
+                  variant="outlined"
+                />
+              )}
+            </InputMask>
+            {errors.phoneNumber && (
               <Typography component="span" color="error">
                 {"Please fill the form"}
               </Typography>
@@ -202,13 +250,12 @@ const TrainingForm = () => {
               </Typography>
             )}
           </Grid>
-          {/* <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <Controller
               as={KeyboardDatePicker}
               name="graduationDate"
               control={control}
-              margin="normal"
-              label="graduationDate"
+              label={"Graduation Date"}
               clearable
               fullWidth
               defaultValue={
@@ -219,18 +266,17 @@ const TrainingForm = () => {
               value={null}
               inputVariant="outlined"
               format={DateFormatDot}
-              onChange={([date]: [date: any]) =>
+              onChange={(date: any) =>
                 date && isValid(date) ? format(date, DateFormat) : null
               }
               rules={{ required: true }}
             />
-
             {errors.graduationDate && (
               <Typography component="span" color="error">
                 {"Please fill the form"}
               </Typography>
             )}
-          </Grid> */}
+          </Grid>
           <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
@@ -246,8 +292,12 @@ const TrainingForm = () => {
               </Typography>
             )}
           </Grid>
-          <Grid item xs={12}>
-            <Button type="submit" variant="contained">
+          <Grid item xs={12} container alignItems="center" justify="center">
+            <Button
+              className={classes.button}
+              type="submit"
+              variant="contained"
+            >
               Submit
             </Button>
           </Grid>
