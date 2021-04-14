@@ -19,14 +19,14 @@ const useStyles = makeStyles((theme: Theme) =>
     subTitle: {
       maxWidth: 400,
       marginTop: '10%',
-      margin: 'auto',
+      padding: '5%',
       fontFamily: 'BlinkMacSystemFont',
       color: '#406370',
     },
     info: {
       maxWidth: 400,
       marginTop: theme.spacing(2),
-      margin: 'auto',
+      padding: '5%',
       fontFamily: 'BlinkMacSystemFont',
     },
   })
@@ -54,16 +54,21 @@ const TopPage = (props: TopPageProps) => {
           <Typography className={classes.info} variant="h6" gutterBottom>
             {info}
           </Typography>
-          <Button
-            href="/details"
-            color="primary"
-            variant="contained"
+          <div
             style={{
-              margin: 'auto',
+              display: 'flex',
+              width: '100%',
+              padding: '5%',
             }}
           >
-            Read More...
-          </Button>
+            <Button
+              href="/details/#training-detail"
+              color="primary"
+              variant="contained"
+            >
+              Read More...
+            </Button>
+          </div>
         </Grid>
         <Grid item xs={12} sm={8}>
           <img

@@ -193,7 +193,7 @@ export default function Navbar() {
           </Typography>
           <Link
             className={classes.links}
-            href="#"
+            href="/#trainings"
             color="inherit"
             underline="none"
           >

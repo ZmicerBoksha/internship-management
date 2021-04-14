@@ -1,9 +1,9 @@
 import React from 'react'
-import TopPage from '../shared/TopPage'
-import PageDivider from '../shared/PageDivider'
+import TopPage from '../../shared/TopPage'
+import PageDivider from '../../shared/PageDivider'
 import {makeStyles, Theme, createStyles} from '@material-ui/core/styles'
 import Trainings from './Trainings'
-import banner from '../../assets/images/homebg.png'
+import banner from '../../../assets/images/homebg.png'
 import {Button} from '@material-ui/core'
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -27,7 +27,7 @@ const HomePage = () => {
       </div>
 
       <div>
-        <PageDivider title="Trainings" />
+        <PageDivider id="trainings" title="Trainings" />
         <Trainings />
       </div>
     </>

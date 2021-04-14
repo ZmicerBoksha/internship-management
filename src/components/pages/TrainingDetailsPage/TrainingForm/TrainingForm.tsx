@@ -5,7 +5,7 @@ import InputMask from 'react-input-mask'
 import {Button, Grid, TextField, Typography, useTheme} from '@material-ui/core'
 import {KeyboardDatePicker} from '@material-ui/pickers'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import {DateFormat, DateFormatDot} from '../../constants/DateFormats'
+import {DateFormat, DateFormatDot} from '../../../constants/DateFormats'
 import {format, isValid} from 'date-fns'
 
 interface IFormInput {
