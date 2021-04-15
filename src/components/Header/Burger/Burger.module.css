@@ -1,0 +1,18 @@
+.burger {
+	display: none;
+	cursor: pointer;
+}
+
+.burger div {
+	width: 2.5rem;
+	height: 0.3rem;
+	margin: 0.5rem;
+	background: #fff;
+}
+
+/* == Screen <= 768px == */
+@media screen and (max-width: 48.858em) {
+	.burger {
+		display: block;
+	}
+}
