@@ -1,0 +1,8 @@
+/* == Screen <= 768px == */
+@media screen and (max-width: 48.858em) {
+	.search {
+		position: absolute;
+		top: 8vh;
+		right: 0;
+	}
+}

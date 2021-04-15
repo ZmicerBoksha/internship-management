@@ -1,0 +1,55 @@
+@import '~@csstools/normalize.css';
+
+*,
+*:after,
+*:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+	font-size: 62.5%; 
+}
+
+body {
+	margin: 0;
+	font-family: "Crete Round", serif;
+  font-size: 100%;
+}
+
+.unselectable {
+  user-select: none;
+}
+
+.hide-text {
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	margin: 0;
+	font-size: 0;
+}
+
+/* Анимация всех текстовых ссылок сайта */
+@keyframes colorAnimHover {
+	from {color: #fff;}
+	to {color: #41C1F0;}
+}
+
+@keyframes colorAnimLink {
+	from {color: #41C1F0;}
+	to {color: #fff;}
+}
+
+.link:link,
+.link:visited {
+	animation: colorAnimLink 500ms;
+	text-decoration: none;
+	color: #fff;
+}
+
+.link:active,
+.link:hover {
+	animation: colorAnimHover 500ms;
+	color: #41C1F0;
+}
