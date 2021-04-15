@@ -5,6 +5,7 @@ import {makeStyles, Theme, createStyles} from '@material-ui/core/styles'
 import Trainings from './Trainings'
 import banner from '../../../assets/images/homebg.png'
 import {Button} from '@material-ui/core'
+import CountrySelect from '../../shared/FilterSelector/FilterSelector'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,7 +29,9 @@ const HomePage = () => {
 
       <div>
         <PageDivider id="trainings" title="Trainings" />
+
         <Trainings />
+        <CountrySelect />
       </div>
     </>
   )

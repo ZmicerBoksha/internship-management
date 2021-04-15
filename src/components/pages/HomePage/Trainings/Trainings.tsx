@@ -75,7 +75,6 @@ const Trainings = () => {
       <Grid container spacing={3}>
         {data &&
           data.data.map((detail: DetailType) => {
-            console.log('aaaaaaaaaaaaaaaaa' + data)
             return (
               <Grid key={detail.id} item xs={12} sm={4}>
                 <Paper className={classes.paper}>
@@ -102,43 +101,6 @@ const Trainings = () => {
               </Grid>
             )
           })}
-
-        {/* <Grid item xs={12} sm={4}>
-          <Paper className={classes.paper}>
-            <Typography className={classes.title} variant="h5" component="h1">
-              asdfasdf
-            </Typography>
-            <ul>
-              <li>
-                <Typography
-                  className={classes.subTitle}
-                  variant="subtitle1"
-                  component="h1"
-                >
-                  asdfasdf
-                </Typography>
-              </li>
-            </ul>
-          </Paper>
-        </Grid>
-        <Grid item xs={12} sm={4}>
-          <Paper className={classes.paper}>
-            <Typography className={classes.title} variant="h5" component="h1">
-              asdfasdf
-            </Typography>
-            <ul>
-              <li>
-                <Typography
-                  className={classes.subTitle}
-                  variant="subtitle1"
-                  component="h1"
-                >
-                  asdfasdf
-                </Typography>
-              </li>
-            </ul>
-          </Paper>
-        </Grid> */}
       </Grid>
     </div>
   )

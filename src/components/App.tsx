@@ -1,9 +1,9 @@
 import React from 'react'
 import {Redirect, Route, Switch} from 'react-router-dom'
 
-import HomePage from '../pages/HomePage'
-import Navbar from '../shared/Navbar'
-import TrainingDetailsPage from '../pages/TrainingDetailsPage'
+import HomePage from './pages/HomePage'
+import Navbar from './shared/Navbar'
+import TrainingDetailsPage from './pages/TrainingDetailsPage'
 import {configure} from 'axios-hooks'
 import LRU from 'lru-cache'
 import Axios from 'axios'
