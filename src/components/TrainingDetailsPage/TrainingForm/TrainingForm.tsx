@@ -53,10 +53,27 @@ const TrainingForm = () => {
     handleSubmit,
     errors,
   } = useForm<IFormInput>();
-  const onSubmit = (data: IFormInput) => console.log(data);
+
+  const onSubmit = (data: IFormInput) => {
+    // console.log(data);
+
+    fetch("http://localhost:8085/api/candidate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.text())
+    .then(response => {
+      console.log(response);
+    })
+  };
+
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up("sm"));
+
   return (
     <div
       style={matches ? { margin: "5% 15% 2% 15%" } : { margin: "5% 1% 2% 1%" }}

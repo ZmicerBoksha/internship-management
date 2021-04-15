@@ -1,5 +1,6 @@
 .logo {
 	width: 20.4rem;
+	min-width: 20.4rem;
 	text-align: center;
 	font-size: 2.8rem;
 	text-decoration: none;

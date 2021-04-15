@@ -1,17 +1,16 @@
 import React from "react";
 
-// import style from "./Header.module.css";
 import Logo from "../Logo/Logo";
 import Navigation from "./Navigation/Navigation";
 import Search from "./Search/Search";
 import Burger from "./Burger/Burger";
-import "./Header.css";
+import "./NavPanel.css";
 
-class Header extends React.Component {
+class NavPanel extends React.Component {
   render() {
     return (
-      <header className="header">
-        <div className="wrap">
+      <header className="NavPanel">
+        <div className="NavPanel__wrap">
           <Logo />
           <Navigation />
           <Search />
@@ -22,4 +21,4 @@ class Header extends React.Component {
   }
 }
 
-export default Header;
+export default NavPanel;

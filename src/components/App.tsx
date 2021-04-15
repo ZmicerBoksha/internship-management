@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import HomePage from "./HomePage";
-import Header from "./Header/Header";
+import NavPanel from "./NavPanel/NavPanel";
 import TrainingDetailsPage from "./TrainingDetailsPage";
 import { configure } from "axios-hooks";
 import LRU from "lru-cache";
@@ -17,7 +17,7 @@ configure({ axios, cache });
 const App: React.FC = () => {
   return (
     <Router>
-      <Header />
+      <NavPanel />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/details" component={TrainingDetailsPage } />
