@@ -1,0 +1,36 @@
+/* == Screen > 1200px == */
+.header {
+	background: #1E5A70;
+}
+
+.wrap {
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	/* max-width: 114rem; */
+	width: 114rem;
+	min-height: 8vh;
+	margin: 0 auto;
+	align-items: center;
+
+	transition: width 500ms;
+}
+
+/* == Screen <= 1200px == */
+@media screen and (max-width: 76.341em) {
+	.wrap {
+		width: 96rem;
+	}
+}
+
+/* == Screen <= 992px == */
+@media screen and (max-width: 63.108em) {
+	.wrap {
+		width: 72rem;
+	}
+}
+
+/* Анимация панели с навигацией */
+.list-active {
+	transform: translateX(0%);
+}
