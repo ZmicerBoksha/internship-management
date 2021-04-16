@@ -1,6 +1,8 @@
 import React from 'react'
 import {makeStyles, Theme, createStyles} from '@material-ui/core/styles'
 import {Typography} from '@material-ui/core'
+import useAxios from 'axios-hooks'
+import {useParams} from 'react-router'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -23,21 +25,45 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 )
+interface DetailType {
+  title: string
+  evLocation: string
+  evStartDate: string
+  evDuration: string
+  evId: number
+  email: string
+  first_name: string
+  last_name: string
+  evDeadline: string
+
+  eventType: {
+    evtName: string
+    evtDescription: string
+    evtCreatedAt: Date
+  }
+}
+interface IData {
+  data: DetailType[]
+}
+interface ID {
+  id: any
+}
 const TrainingDetails = () => {
   const classes = useStyles()
+  const {id} = useParams<ID>()
+  const [{data, loading, error}, refetch] = useAxios<DetailType>({
+    url: `/event/${id}`,
+    method: 'GET',
+  })
+  if (loading) return <p>Loading...</p>
+
   return (
     <>
       <Typography className={classes.subTitle} variant="h3" component="h1">
         Training Details
       </Typography>
       <Typography className={classes.info} variant="h6" gutterBottom>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-        veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
-        mollit anim id est laborum.
+        {data?.eventType.evtDescription}
       </Typography>
       <Typography className={classes.subTitle} variant="h3" component="h1">
         Required Skills

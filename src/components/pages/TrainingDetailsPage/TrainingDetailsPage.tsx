@@ -6,6 +6,8 @@ import banner2 from '../../../assets/images/secondbg.png'
 import PageDivider from '../../shared/PageDivider'
 import TrainingDetails from './TrainingDetails/TrainingDetails'
 import TrainingForm from './TrainingForm'
+import {useParams} from 'react-router-dom'
+import useAxios from 'axios-hooks'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -14,16 +16,43 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 )
+interface DetailType {
+  title: string
+  evLocation: string
+  evStartDate: string
+  evDuration: string
+  evId: number
+  email: string
+  first_name: string
+  last_name: string
+  evDeadline: string
 
+  eventType: {
+    evtName: string
+    evtDescription: string
+    evtCreatedAt: Date
+  }
+}
+interface IData {
+  data: DetailType[]
+}
+interface ID {
+  id: any
+}
 const TrainingDetailsPage = () => {
   const classes = useStyles()
+  const {id} = useParams<ID>()
+  const [{data, loading, error}, refetch] = useAxios<DetailType>({
+    url: `/event/${id}`,
+    method: 'GET',
+  })
   return (
     <>
       <div className={classes.root}>
         <TopPage
-          title="JavaScript Internship"
+          title={data?.eventType.evtName}
           subTitle="Start NOW"
-          info="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+          info={data?.eventType.evtDescription}
           imageUrl={banner2}
         />
       </div>

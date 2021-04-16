@@ -1,5 +1,5 @@
 import React from 'react'
-import {Redirect, Route, Switch} from 'react-router-dom'
+import {Redirect, Route, Switch, useParams} from 'react-router-dom'
 
 import HomePage from './pages/HomePage'
 import Navbar from './shared/Navbar'
@@ -9,7 +9,7 @@ import LRU from 'lru-cache'
 import Axios from 'axios'
 
 const axios = Axios.create({
-  baseURL: 'https://reqres.in/api',
+  baseURL: 'http://localhost:8085/api',
 })
 const cache = new LRU({max: 20})
 
@@ -21,7 +21,7 @@ const App: React.FC = () => {
       <Navbar />
       <Switch>
         <Route exact path="/" component={HomePage}></Route>
-        <Route path="/details" component={TrainingDetailsPage}></Route>
+        <Route path="/details/:id" component={TrainingDetailsPage}></Route>
       </Switch>
     </>
   )

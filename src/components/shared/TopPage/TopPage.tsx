@@ -32,9 +32,9 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 interface TopPageProps {
-  title: string
+  title: any
   subTitle: string
-  info: string
+  info: any
   imageUrl: any
 }
 const TopPage = (props: TopPageProps) => {
