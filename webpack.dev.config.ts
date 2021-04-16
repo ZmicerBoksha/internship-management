@@ -48,8 +48,10 @@ const config: Configuration = {
       },
       {
         test: /\.css$/i,
+
         use: ['style-loader', 'css-loader'],
       },
+
     ],
   },
   resolve: {
@@ -71,7 +73,9 @@ const config: Configuration = {
   devServer: {
     contentBase: path.join(__dirname, 'build'),
     historyApiFallback: true,
+
     port: 3000,
+
     open: true,
     hot: true,
   },

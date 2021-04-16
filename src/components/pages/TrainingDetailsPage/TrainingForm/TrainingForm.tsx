@@ -7,6 +7,7 @@ import {KeyboardDatePicker} from '@material-ui/pickers'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import {DateFormat, DateFormatDot} from '../../../constants/DateFormats'
 import {format, isValid} from 'date-fns'
+
 import useAxios from 'axios-hooks'
 import {useParams} from 'react-router'
 
@@ -22,15 +23,18 @@ interface IFormInput {
   phone: string
   birthday: string
   rsmId: number
+
   skype: string
   country: string
   city: string
   technology: string
 
+
   graduationDate: Date
 }
 interface ID {
   id: any
+
 }
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -59,6 +63,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 const TrainingForm = () => {
+
   const {id} = useParams<ID>()
   const [{data: formData, loading, error}, executePost] = useAxios(
     {
@@ -69,6 +74,7 @@ const TrainingForm = () => {
     {manual: true}
   )
 
+
   const {
     getValues,
     register,
@@ -76,6 +82,7 @@ const TrainingForm = () => {
     handleSubmit,
     errors,
   } = useForm<IFormInput>()
+
   const onSubmit = (formData: IFormInput) => {
     executePost({
       data: {
@@ -84,6 +91,7 @@ const TrainingForm = () => {
       },
     })
   }
+
   const classes = useStyles()
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.up('sm'))
@@ -165,7 +173,9 @@ const TrainingForm = () => {
               {() => (
                 <TextField
                   fullWidth
+
                   name="phone"
+
                   inputRef={register({required: true})}
                   id="outlined"
                   label={'PhoneNumber'}
@@ -173,7 +183,9 @@ const TrainingForm = () => {
                 />
               )}
             </InputMask>
+
             {errors.phone && (
+
               <Typography component="span" color="error">
                 Please fill the form
               </Typography>
@@ -243,12 +255,16 @@ const TrainingForm = () => {
             <TextField
               id="outlined-basic"
               label="English Level"
+
               name="englishLevel"
+
               inputRef={register({required: true})}
               variant="outlined"
               fullWidth
             />
+
             {errors.englishLevel && (
+
               <Typography component="span" color="error">
                 Please fill the form
               </Typography>
@@ -257,13 +273,17 @@ const TrainingForm = () => {
           <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
+
               label="Education"
               name="education"
+
               inputRef={register({required: true})}
               variant="outlined"
               fullWidth
             />
+
             {errors.education && (
+
               <Typography component="span" color="error">
                 Please fill the form
               </Typography>
