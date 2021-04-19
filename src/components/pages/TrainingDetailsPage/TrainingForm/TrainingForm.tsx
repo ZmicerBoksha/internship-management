@@ -20,14 +20,12 @@ interface IFormInput {
   patronymic: string
   location: string
   phone: string
-  birthday: string
-  rsmId: number
   skype: string
   country: string
   city: string
   technology: string
-
-  graduationDate: Date
+  graduationDate: string
+  expertise: string
 }
 interface ID {
   id: any
@@ -62,7 +60,7 @@ const TrainingForm = () => {
   const {id} = useParams<ID>()
   const [{data: formData, loading, error}, executePost] = useAxios(
     {
-      url: `/candidate/${id}`,
+      url: `/candidate`,
       method: 'POST',
       // data: {...formData, id: id},
     },
@@ -80,7 +78,6 @@ const TrainingForm = () => {
     executePost({
       data: {
         ...formData,
-        rsmId: id,
       },
     })
   }
@@ -128,7 +125,7 @@ const TrainingForm = () => {
               </Typography>
             )}
           </Grid>
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
               label="Patronymic"
@@ -142,7 +139,7 @@ const TrainingForm = () => {
                 Please fill the form
               </Typography>
             )}
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12} sm={6}>
             <TextField
@@ -161,7 +158,7 @@ const TrainingForm = () => {
             )}
           </Grid>
           <Grid item xs={12} sm={6}>
-            <InputMask mask="(\9\9\8) 99 999-99-99">
+            <InputMask mask="999999999999">
               {() => (
                 <TextField
                   fullWidth
@@ -194,7 +191,7 @@ const TrainingForm = () => {
               </Typography>
             )}
           </Grid>
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
               label="Country"
@@ -208,8 +205,8 @@ const TrainingForm = () => {
                 Please fill the form
               </Typography>
             )}
-          </Grid>
-          <Grid item xs={12} sm={6}>
+          </Grid> */}
+          {/* <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
               label="City"
@@ -223,8 +220,8 @@ const TrainingForm = () => {
                 Please fill the form
               </Typography>
             )}
-          </Grid>
-          <Grid item xs={12} sm={6}>
+          </Grid> */}
+          {/* <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
               label="Technology"
@@ -238,7 +235,7 @@ const TrainingForm = () => {
                 Please fill the form
               </Typography>
             )}
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
@@ -269,7 +266,7 @@ const TrainingForm = () => {
               </Typography>
             )}
           </Grid>
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <Controller
               as={KeyboardDatePicker}
               name="graduationDate"
@@ -295,7 +292,7 @@ const TrainingForm = () => {
                 Please fill the form
               </Typography>
             )}
-          </Grid>
+          </Grid> */}
           <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
@@ -306,6 +303,36 @@ const TrainingForm = () => {
               fullWidth
             />
             {errors.experience && (
+              <Typography component="span" color="error">
+                Please fill the form
+              </Typography>
+            )}
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="outlined-basic"
+              label="Expertise"
+              name="expertise"
+              inputRef={register({required: true})}
+              variant="outlined"
+              fullWidth
+            />
+            {errors.expertise && (
+              <Typography component="span" color="error">
+                Please fill the form
+              </Typography>
+            )}
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="outlined-basic"
+              label="Location"
+              name="location"
+              inputRef={register({required: true})}
+              variant="outlined"
+              fullWidth
+            />
+            {errors.location && (
               <Typography component="span" color="error">
                 Please fill the form
               </Typography>
