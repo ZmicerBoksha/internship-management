@@ -7,6 +7,7 @@ import {KeyboardDatePicker} from '@material-ui/pickers'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import {DateFormat, DateFormatDot} from '../../../constants/DateFormats'
 import {format, isValid} from 'date-fns'
+
 import useAxios from 'axios-hooks'
 import {useParams} from 'react-router'
 
@@ -74,6 +75,7 @@ const TrainingForm = () => {
     handleSubmit,
     errors,
   } = useForm<IFormInput>()
+
   const onSubmit = (formData: IFormInput) => {
     executePost({
       data: {
@@ -81,6 +83,7 @@ const TrainingForm = () => {
       },
     })
   }
+
   const classes = useStyles()
   const theme = useTheme()
   const matches = useMediaQuery(theme.breakpoints.up('sm'))
@@ -170,6 +173,7 @@ const TrainingForm = () => {
                 />
               )}
             </InputMask>
+
             {errors.phone && (
               <Typography component="span" color="error">
                 Please fill the form
@@ -245,6 +249,7 @@ const TrainingForm = () => {
               variant="outlined"
               fullWidth
             />
+
             {errors.englishLevel && (
               <Typography component="span" color="error">
                 Please fill the form
@@ -260,6 +265,7 @@ const TrainingForm = () => {
               variant="outlined"
               fullWidth
             />
+
             {errors.education && (
               <Typography component="span" color="error">
                 Please fill the form

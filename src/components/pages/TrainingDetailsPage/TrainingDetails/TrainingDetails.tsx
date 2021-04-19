@@ -1,8 +1,10 @@
 import React from 'react'
 import {makeStyles, Theme, createStyles} from '@material-ui/core/styles'
 import {Typography} from '@material-ui/core'
+
 import useAxios from 'axios-hooks'
 import {useParams} from 'react-router'
+
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -25,6 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 )
+
 interface DetailType {
   title: string
   evLocation: string
@@ -57,13 +60,16 @@ const TrainingDetails = () => {
   })
   if (loading) return <p>Loading...</p>
 
+
   return (
     <>
       <Typography className={classes.subTitle} variant="h3" component="h1">
         Training Details
       </Typography>
       <Typography className={classes.info} variant="h6" gutterBottom>
+
         {data?.eventType.evtDescription}
+
       </Typography>
       <Typography className={classes.subTitle} variant="h3" component="h1">
         Required Skills

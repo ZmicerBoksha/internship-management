@@ -9,6 +9,7 @@ import TrainingForm from './TrainingForm'
 import {useParams} from 'react-router-dom'
 import useAxios from 'axios-hooks'
 
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -16,6 +17,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
   })
 )
+
 interface DetailType {
   title: string
   evLocation: string
@@ -46,13 +48,16 @@ const TrainingDetailsPage = () => {
     url: `/event/${id}`,
     method: 'GET',
   })
+
   return (
     <>
       <div className={classes.root}>
         <TopPage
+
           title={data?.eventType.evtName}
           subTitle="Start NOW"
           info={data?.eventType.evtDescription}
+
           imageUrl={banner2}
         />
       </div>
