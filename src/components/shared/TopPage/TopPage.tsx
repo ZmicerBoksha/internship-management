@@ -6,6 +6,7 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       width: '100%',
+      margin: 1,
     },
     title: {
       maxWidth: 800,
@@ -32,7 +33,6 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 interface TopPageProps {
-
   title: any
   subTitle: string
   info: any
@@ -63,11 +63,7 @@ const TopPage = (props: TopPageProps) => {
               padding: '5%',
             }}
           >
-            <Button
-              href="/details/#training-detail"
-              color="primary"
-              variant="contained"
-            >
+            <Button href="/#trainings" color="primary" variant="contained">
               Read More...
             </Button>
           </div>

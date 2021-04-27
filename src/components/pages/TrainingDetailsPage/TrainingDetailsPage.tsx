@@ -8,8 +8,7 @@ import TrainingDetails from './TrainingDetails/TrainingDetails'
 import TrainingForm from './TrainingForm'
 import {useParams} from 'react-router-dom'
 import useAxios from 'axios-hooks'
-
-
+import {IEventDto} from '../../../models/IEventsDto'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -18,33 +17,13 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-interface DetailType {
-  title: string
-  evLocation: string
-  evStartDate: string
-  evDuration: string
-  evId: number
-  email: string
-  first_name: string
-  last_name: string
-  evDeadline: string
-
-  eventType: {
-    evtName: string
-    evtDescription: string
-    evtCreatedAt: Date
-  }
-}
-interface IData {
-  data: DetailType[]
-}
 interface ID {
   id: any
 }
 const TrainingDetailsPage = () => {
   const classes = useStyles()
   const {id} = useParams<ID>()
-  const [{data, loading, error}, refetch] = useAxios<DetailType>({
+  const [{data, loading, error}, refetch] = useAxios<IEventDto>({
     url: `/event/${id}`,
     method: 'GET',
   })
@@ -53,11 +32,9 @@ const TrainingDetailsPage = () => {
     <>
       <div className={classes.root}>
         <TopPage
-
-          title={data?.eventType.evtName}
+          title={data?.eventType?.name}
           subTitle="Start NOW"
-          info={data?.eventType.evtDescription}
-
+          info={data?.eventType?.description}
           imageUrl={banner2}
         />
       </div>

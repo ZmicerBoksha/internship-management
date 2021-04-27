@@ -4,7 +4,7 @@ import {Typography} from '@material-ui/core'
 
 import useAxios from 'axios-hooks'
 import {useParams} from 'react-router'
-
+import {IEventDto} from '../../../../models/IEventsDto'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -28,38 +28,17 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-interface DetailType {
-  title: string
-  evLocation: string
-  evStartDate: string
-  evDuration: string
-  evId: number
-  email: string
-  first_name: string
-  last_name: string
-  evDeadline: string
-
-  eventType: {
-    evtName: string
-    evtDescription: string
-    evtCreatedAt: Date
-  }
-}
-interface IData {
-  data: DetailType[]
-}
 interface ID {
   id: any
 }
 const TrainingDetails = () => {
   const classes = useStyles()
   const {id} = useParams<ID>()
-  const [{data, loading, error}, refetch] = useAxios<DetailType>({
+  const [{data, loading, error}, refetch] = useAxios<IEventDto>({
     url: `/event/${id}`,
     method: 'GET',
   })
   if (loading) return <p>Loading...</p>
-
 
   return (
     <>
@@ -67,26 +46,21 @@ const TrainingDetails = () => {
         Training Details
       </Typography>
       <Typography className={classes.info} variant="h6" gutterBottom>
-
-        {data?.eventType.evtDescription}
-
+        {data?.eventType?.description}
+        <p className={classes.subSkills}>Start Date: {data?.startDate}</p>
+        <p className={classes.subSkills}>
+          Location: {data?.country}, {data?.city}
+        </p>
+        <p className={classes.subSkills}>Format: {data?.format}</p>
+        <p className={classes.subSkills}>Deadline: {data?.deadline}</p>
+        <p className={classes.subSkills}>Duration: {data?.duration}</p>
       </Typography>
       <Typography className={classes.subTitle} variant="h3" component="h1">
         Required Skills
       </Typography>
       <Typography className={classes.info} variant="h6" gutterBottom>
-        <p className={classes.subSkills}>
-          -Lorem ipsum dolor sit amet, consectetur adipiscing elit
-        </p>
-        <p className={classes.subSkills}>
-          -tempor incididunt -veniam, quis nostrud exercitation
-        </p>
-        <p className={classes.subSkills}>-commodo consequat.</p>
-        <p className={classes.subSkills}>
-          -velit esse cillum dolore eu fugiat nulla pariatur.{' '}
-        </p>
-        <p className={classes.subSkills}>-occaecat cupidatat </p>
-        <p className={classes.subSkills}>-mollit anim id est laborum.</p>
+        <p className={classes.subSkills}>English Level: {data?.englishLevel}</p>
+        <p className={classes.subSkills}>Technologies: {data?.technologies}</p>
       </Typography>
     </>
   )

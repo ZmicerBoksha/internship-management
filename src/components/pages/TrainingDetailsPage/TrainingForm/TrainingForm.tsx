@@ -2,7 +2,14 @@ import React, {useState} from 'react'
 import {makeStyles, Theme, createStyles} from '@material-ui/core/styles'
 import {Controller, useForm} from 'react-hook-form'
 import InputMask from 'react-input-mask'
-import {Button, Grid, TextField, Typography, useTheme} from '@material-ui/core'
+import {
+  Button,
+  Grid,
+  Snackbar,
+  TextField,
+  Typography,
+  useTheme,
+} from '@material-ui/core'
 import {KeyboardDatePicker} from '@material-ui/pickers'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import {DateFormat, DateFormatDot} from '../../../constants/DateFormats'
@@ -10,6 +17,7 @@ import {format, isValid} from 'date-fns'
 
 import useAxios from 'axios-hooks'
 import {useParams} from 'react-router'
+import {Alert} from '@material-ui/lab'
 
 interface IFormInput {
   education: string
@@ -59,14 +67,29 @@ const useStyles = makeStyles((theme: Theme) =>
 )
 const TrainingForm = () => {
   const {id} = useParams<ID>()
-  const [{data: formData, loading, error}, executePost] = useAxios(
+  const classes = useStyles()
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.up('sm'))
+
+  const [{data: formData, loading, error: formError}, executePost] = useAxios(
     {
       url: `/candidate`,
       method: 'POST',
-      // data: {...formData, id: id},
     },
     {manual: true}
   )
+
+  const [open, setOpen] = useState(false)
+  const handleClick = () => {
+    setOpen(true)
+  }
+  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+    if (reason === 'clickaway') {
+      return
+    }
+
+    setOpen(false)
+  }
 
   const {
     getValues,
@@ -76,17 +99,14 @@ const TrainingForm = () => {
     errors,
   } = useForm<IFormInput>()
 
-  const onSubmit = (formData: IFormInput) => {
+  const onSubmit = (formData: IFormInput, e: any) => {
     executePost({
       data: {
         ...formData,
       },
-    })
+    }),
+      e.target.reset()
   }
-
-  const classes = useStyles()
-  const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.up('sm'))
 
   return (
     <div
@@ -355,6 +375,12 @@ const TrainingForm = () => {
           </Grid>
         </Grid>
       </form>
+      {formError && handleClick()}
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+        <Alert severity="success">
+          Thank You! Your Application is submitted
+        </Alert>
+      </Snackbar>
     </div>
   )
 }
