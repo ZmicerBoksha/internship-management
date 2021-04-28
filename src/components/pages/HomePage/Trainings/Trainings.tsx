@@ -14,9 +14,6 @@ import {
 import {makeStyles, Theme, createStyles} from '@material-ui/core/styles'
 import useAxios from 'axios-hooks'
 import {IEventDto} from '../../../../models/IEventsDto'
-import {useParams} from 'react-router'
-import {countries} from '../../../constants/Countrylist'
-import {Autocomplete} from '@material-ui/lab'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -148,6 +145,8 @@ const Trainings = () => {
                 (inputValue.country
                   ? detail.country === inputValue.country
                   : true)
+              //   &&
+              // detail.eventTab === 'IN_PROGRESS'
             )
             .map((detail: IEventDto) => {
               return (
