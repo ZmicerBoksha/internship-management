@@ -4,7 +4,12 @@ import {Controller, useForm} from 'react-hook-form'
 import InputMask from 'react-input-mask'
 import {
   Button,
+  FormControl,
+  FormControlLabel,
   Grid,
+  InputLabel,
+  MenuItem,
+  Select,
   Snackbar,
   TextField,
   Typography,
@@ -20,21 +25,20 @@ import {useParams} from 'react-router'
 import {Alert} from '@material-ui/lab'
 
 interface IFormInput {
-  education: string
-  email: string
+  city: string
+  country: string
   englishLevel: string
-  experience: string
+  email: string
+  faculty: string
   firstName: string
+  graduationDate: string
+  institution: string
   lastName: string
-  patronymic: string
-  location: string
+  mainSkill: string
+  otherSkills: string
   phone: string
   skype: string
-  country: string
-  city: string
-  technology: string
-  graduationDate: string
-  expertise: string
+  speciality: string
 }
 interface ID {
   id: any
@@ -78,7 +82,11 @@ const TrainingForm = () => {
     },
     {manual: true}
   )
+  const [englevel, setEnglevel] = React.useState('')
 
+  const handleChange = (event: any) => {
+    setEnglevel(event.target.value)
+  }
   const [open, setOpen] = useState(false)
   const handleClick = () => {
     setOpen(true)
@@ -181,7 +189,7 @@ const TrainingForm = () => {
             )}
           </Grid>
           <Grid item xs={12} sm={6}>
-            <InputMask mask="999999999999">
+            <InputMask mask="+999999999999">
               {() => (
                 <TextField
                   fullWidth
@@ -215,7 +223,7 @@ const TrainingForm = () => {
               </Typography>
             )}
           </Grid>
-          {/* <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
               label="Country"
@@ -229,8 +237,8 @@ const TrainingForm = () => {
                 Please fill the form
               </Typography>
             )}
-          </Grid> */}
-          {/* <Grid item xs={12} sm={6}>
+          </Grid>
+          <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
               label="City"
@@ -244,32 +252,57 @@ const TrainingForm = () => {
                 Please fill the form
               </Typography>
             )}
-          </Grid> */}
-          {/* <Grid item xs={12} sm={6}>
+          </Grid>
+          <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
-              label="Technology"
-              name="technology"
+              label="Speciality"
+              name="speciality"
               inputRef={register({required: true})}
               variant="outlined"
               fullWidth
             />
-            {errors.technology && (
+            {errors.speciality && (
               <Typography component="span" color="error">
                 Please fill the form
               </Typography>
             )}
-          </Grid> */}
+          </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField
+            {/* <TextField
               id="outlined-basic"
               label="English Level"
               name="englishLevel"
               inputRef={register({required: true})}
               variant="outlined"
               fullWidth
-            />
+            /> */}
 
+            <FormControl fullWidth variant="outlined">
+              <InputLabel id="demo-simple-select-outlined-label">
+                English Level
+              </InputLabel>
+              <Controller
+                as={
+                  <Select
+                    fullWidth
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    // value={englevel}
+                    // onChange={handleChange}
+                    label="English Level"
+                  >
+                    <MenuItem value="ELEMENTARY">Elementary</MenuItem>
+                    <MenuItem value="INTERMIDATE">Intermidate</MenuItem>
+                    <MenuItem value="ADVANCED">Advanced</MenuItem>
+                  </Select>
+                }
+                name="englishLevel"
+                control={control}
+                rules={{required: true}}
+                // onChange={([selected]) => selected}
+              />
+            </FormControl>
             {errors.englishLevel && (
               <Typography component="span" color="error">
                 Please fill the form
@@ -279,20 +312,35 @@ const TrainingForm = () => {
           <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
-              label="Education"
-              name="education"
+              label="Institution"
+              name="institution"
               inputRef={register({required: true})}
               variant="outlined"
               fullWidth
             />
 
-            {errors.education && (
+            {errors.institution && (
               <Typography component="span" color="error">
                 Please fill the form
               </Typography>
             )}
           </Grid>
-          {/* <Grid item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="outlined-basic"
+              label="faculty"
+              name="faculty"
+              inputRef={register({required: true})}
+              variant="outlined"
+              fullWidth
+            />
+            {errors.faculty && (
+              <Typography component="span" color="error">
+                Please fill the form
+              </Typography>
+            )}
+          </Grid>
+          <Grid item xs={12} sm={6}>
             <Controller
               as={KeyboardDatePicker}
               name="graduationDate"
@@ -318,17 +366,18 @@ const TrainingForm = () => {
                 Please fill the form
               </Typography>
             )}
-          </Grid> */}
+          </Grid>
+
           <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
-              label="Work Experience"
-              name="experience"
+              label="mainSkill"
+              name="mainSkill"
               inputRef={register({required: true})}
               variant="outlined"
               fullWidth
             />
-            {errors.experience && (
+            {errors.mainSkill && (
               <Typography component="span" color="error">
                 Please fill the form
               </Typography>
@@ -337,33 +386,19 @@ const TrainingForm = () => {
           <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
-              label="Expertise"
-              name="expertise"
+              label="otherSkills"
+              name="otherSkills"
               inputRef={register({required: true})}
               variant="outlined"
               fullWidth
             />
-            {errors.expertise && (
+            {errors.otherSkills && (
               <Typography component="span" color="error">
                 Please fill the form
               </Typography>
             )}
           </Grid>
-          <Grid item xs={12} sm={6}>
-            <TextField
-              id="outlined-basic"
-              label="Location"
-              name="location"
-              inputRef={register({required: true})}
-              variant="outlined"
-              fullWidth
-            />
-            {errors.location && (
-              <Typography component="span" color="error">
-                Please fill the form
-              </Typography>
-            )}
-          </Grid>
+
           <Grid item xs={12} container alignItems="center" justify="center">
             <Button
               className={classes.button}
@@ -377,9 +412,7 @@ const TrainingForm = () => {
       </form>
       {formError && handleClick()}
       <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
-        <Alert severity="success">
-          Thank You! Your Application is submitted
-        </Alert>
+        <Alert severity="error">Something went wrong Please try again!</Alert>
       </Snackbar>
     </div>
   )
