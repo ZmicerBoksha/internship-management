@@ -5,6 +5,9 @@ import {Redirect, Route, Switch, useParams} from 'react-router-dom'
 import HomePage from './pages/HomePage'
 import Navbar from './shared/Navbar'
 import TrainingDetailsPage from './pages/TrainingDetailsPage'
+
+import Footer from './shared/Footer/Footer';
+
 import {configure} from 'axios-hooks'
 import LRU from 'lru-cache'
 import Axios from 'axios'
@@ -26,8 +29,8 @@ const App: React.FC = () => {
         <Route exact path="/" component={HomePage}></Route>
 
         <Route path="/details/:id" component={TrainingDetailsPage}></Route>
-
       </Switch>
+      <Footer />
     </>
   )
 }

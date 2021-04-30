@@ -51,7 +51,6 @@ const config: Configuration = {
 
         use: ['style-loader', 'css-loader'],
       },
-
     ],
   },
   resolve: {

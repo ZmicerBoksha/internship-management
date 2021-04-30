@@ -1,0 +1,49 @@
+section.faq .wrap {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  min-height: 92vh;
+  margin: 0 auto;
+  padding: 22px;
+  color: #1E5A70;
+}
+
+section.faq .MuiTypography-root {
+  font-size: 22px;
+}
+
+section.faq .MuiCollapse-entered {
+  color: #1E5A70;
+}
+
+section.faq .header {
+  display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+	height: 8vh;
+	max-height: 8vh;
+	font-size: 2.125rem;
+	background: #1E5A70;
+	color: #fff;
+  user-select: none;
+}
+
+section.faq h2 {
+  margin: 0;
+}
+
+section.faq h3 {
+  margin: 0;
+  font-size: 33px;
+  user-select: none;
+}
+
+/* == Screen <= 768px == */
+@media screen and (max-width: 48.858em) {
+  section.faq .wrap {
+    flex-flow: column nowrap;
+    justify-content: center;
+  }
+}

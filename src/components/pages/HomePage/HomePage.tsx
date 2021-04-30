@@ -4,6 +4,8 @@ import PageDivider from '../../shared/PageDivider'
 import {makeStyles, Theme, createStyles} from '@material-ui/core/styles'
 import Trainings from './Trainings'
 import banner from '../../../assets/images/homebg.png'
+import About from './About/About';
+import FAQ from './FAQ/FAQ';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -29,6 +31,14 @@ const HomePage = () => {
         <PageDivider id="trainings" title="Trainings" />
 
         <Trainings />
+      </div>
+
+      <div>
+        <About />
+      </div>
+
+      <div>
+        <FAQ />
       </div>
     </>
   )
