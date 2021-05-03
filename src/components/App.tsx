@@ -7,6 +7,7 @@ import Navbar from './shared/Navbar'
 import TrainingDetailsPage from './pages/TrainingDetailsPage'
 
 import Footer from './shared/Footer/Footer';
+import NoMatch from './pages/NoMatch/NoMatch';
 
 import {configure} from 'axios-hooks'
 import LRU from 'lru-cache'
@@ -28,7 +29,8 @@ const App: React.FC = () => {
       <Switch>
         <Route exact path="/" component={HomePage}></Route>
 
-        <Route path="/details/:id" component={TrainingDetailsPage}></Route>
+        <Route exact path="/details/:id" component={TrainingDetailsPage}></Route>
+        <Route path="*" component={NoMatch} />
       </Switch>
       <Footer />
     </>
