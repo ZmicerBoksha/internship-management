@@ -3,6 +3,7 @@ section.about .wrap {
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
+  width: 70%;
   min-height: 92vh;
   margin: 0 auto;
   padding: 22px;
@@ -63,6 +64,20 @@ section.about .footer {
   background: initial;
   color: #41C1F0;
   user-select: none;
+}
+
+/* == Screen <= 1200px == */
+@media screen and (max-width: 76.341em) {
+  section.about .wrap {
+    width: 80%;
+  }
+}
+
+/* == Screen <= 992px == */
+@media screen and (max-width: 63.108em) {
+  section.about .wrap {
+    width: 90%;
+  }
 }
 
 /* == Screen <= 768px == */

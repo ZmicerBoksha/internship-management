@@ -13,7 +13,7 @@ const NoMatch: FunctionComponent = () => {
         Sorry, the page <code>{location.pathname}</code> could not be found.
       </h2>
 
-      <Link to="./" className="link">Go back to the home page</Link>
+      <Link to="/" className="link">Go back to the home page</Link>
     </section>
   );
 }

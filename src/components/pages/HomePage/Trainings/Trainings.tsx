@@ -55,7 +55,7 @@ const Trainings = () => {
   const classes = useStyles()
 
   const [{data, loading, error}, refetch] = useAxios('/event/all')
-  console.log('data', data)
+  // console.log('data', data)
   const [inputValue, setInputValue] = useState<IEventDto>({})
   if (loading) return <p>loading...</p>
   if (error) return <p>Error!</p>

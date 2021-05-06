@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage'
 import Navbar from './shared/Navbar'
 import TrainingDetailsPage from './pages/TrainingDetailsPage'
 
+import About from './pages/About/About';
 import Footer from './shared/Footer/Footer';
 import NoMatch from './pages/NoMatch/NoMatch';
 
@@ -30,6 +31,7 @@ const App: React.FC = () => {
         <Route exact path="/" component={HomePage}></Route>
 
         <Route exact path="/details/:id" component={TrainingDetailsPage}></Route>
+        <Route path="/about/:id" component={About} />
         <Route path="*" component={NoMatch} />
       </Switch>
       <Footer />

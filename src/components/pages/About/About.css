@@ -1,0 +1,60 @@
+section.page-about .wrap {
+  width: 60%;
+  min-height: 82vh;
+  margin: 0 auto;
+  padding: 22px;
+  text-align: center;
+  background: url('https://exadel.com/wp-content/uploads/2019/10/illustration.svg') center calc(100% - 5%)/calc(100% - 30%) no-repeat;
+  color: #1E5A70;
+  transition: background-position-y 500ms;
+}
+
+section.page-about h1 {
+  margin: 0;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+section.page-about h2 {
+  margin: 0.8rem 0;
+}
+
+section.page-about .page-about__back {
+  text-align: left;
+  font-size: 1.2rem;
+}
+
+section.page-about p {
+  font-size:  1.6rem;
+}
+
+/* == Screen <= 1200px == */
+@media screen and (max-width: 76.341em) {
+  section.page-about .wrap {
+    background-position-y: 70%;
+  }
+}
+
+/* Анимация ссылок  */
+@keyframes pageAboutHover {
+	from {color: #1E5A70;}
+	to {color: #41C1F0;}
+}
+
+@keyframes pageAboutLink {
+	from {color: #41C1F0;}
+	to {color: #1E5A70;}
+}
+
+section.page-about .link:link,
+section.page-about .link:visited {
+	animation: pageAboutLink 500ms;
+	text-decoration: none;
+	color: #1E5A70;
+}
+
+section.page-about .link:active,
+section.page-about .link:hover {
+	animation: pageAboutHover 500ms;
+	color: #41C1F0;
+}
