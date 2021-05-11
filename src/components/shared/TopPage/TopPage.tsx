@@ -5,6 +5,8 @@ import {makeStyles, Theme, createStyles} from '@material-ui/core/styles'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      flexGrow: 1,
+      height: '100%',
       width: '70%',
       margin: '0 auto',
     },
@@ -44,11 +46,12 @@ const TopPage = (props: TopPageProps) => {
   const {title, subTitle, info, imageUrl} = props
   return (
     <div className={classes.root}>
-      <Typography className={classes.title} variant="h2" component="h1">
-        {title}
-      </Typography>
-
       <Grid container justify="center" alignItems="center">
+        <Grid item xs={12}>
+          <Typography className={classes.title} variant="h2" component="h1">
+            {title}
+          </Typography>
+        </Grid>
         <Grid item xs={12} sm={4}>
           <Typography className={classes.subTitle} variant="h3" component="h1">
             {subTitle}

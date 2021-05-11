@@ -162,8 +162,6 @@ const useStyles = makeStyles({
   navbarDisplayFlex: {
     display: `flex`,
     justifyContent: `space-between`,
-    margin: '0 auto',
-    width: '70%',
   },
   navListDisplayFlex: {
     display: `flex`,
