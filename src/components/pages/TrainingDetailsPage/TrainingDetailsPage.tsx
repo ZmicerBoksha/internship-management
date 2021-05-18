@@ -31,7 +31,12 @@ const TrainingDetailsPage = () => {
 
   return (
     <>
-      <Grid container>
+      <Grid
+        container
+        direction="column"
+        justify="space-between"
+        alignItems="center"
+      >
         <Grid item xs={12}>
           <TopPage
             title={data?.eventType?.name}
