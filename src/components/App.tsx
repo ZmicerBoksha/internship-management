@@ -1,15 +1,23 @@
 import React from 'react'
-import {Redirect, Route, Switch} from 'react-router-dom'
+
+import {Redirect, Route, Switch, useParams} from 'react-router-dom'
 
 import HomePage from './pages/HomePage'
 import Navbar from './shared/Navbar'
 import TrainingDetailsPage from './pages/TrainingDetailsPage'
+
+import About from './pages/About/About';
+import Footer from './shared/Footer/Footer';
+import NoMatch from './pages/NoMatch/NoMatch';
+
 import {configure} from 'axios-hooks'
 import LRU from 'lru-cache'
 import Axios from 'axios'
 
 const axios = Axios.create({
-  baseURL: 'https://reqres.in/api',
+
+  baseURL: 'http://localhost:8085/api',
+
 })
 const cache = new LRU({max: 20})
 
@@ -21,8 +29,12 @@ const App: React.FC = () => {
       <Navbar />
       <Switch>
         <Route exact path="/" component={HomePage}></Route>
-        <Route path="/details" component={TrainingDetailsPage}></Route>
+
+        <Route exact path="/details/:id" component={TrainingDetailsPage}></Route>
+        <Route path="/about/:id" component={About} />
+        <Route path="*" component={NoMatch} />
       </Switch>
+      <Footer />
     </>
   )
 }

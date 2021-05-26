@@ -5,15 +5,6 @@ import {makeStyles} from '@material-ui/core/styles'
 import {countries} from '../../constants/Countrylist'
 // ISO 3166-1 alpha-2
 // ⚠️ No support for IE 11
-function countryToFlag(isoCode: string) {
-  return typeof String.fromCodePoint !== 'undefined'
-    ? isoCode
-        .toUpperCase()
-        .replace(/./g, (char) =>
-          String.fromCodePoint(char.charCodeAt(0) + 127397)
-        )
-    : isoCode
-}
 
 const useStyles = makeStyles({
   option: {
@@ -48,7 +39,7 @@ export default function CountrySelect() {
       getOptionLabel={(option) => option.label}
       renderOption={(option) => (
         <React.Fragment>
-          <span>{countryToFlag(option.code)}</span>
+          <span>{option.code}</span>
           {option.label}
         </React.Fragment>
       )}

@@ -6,7 +6,10 @@ import banner2 from '../../../assets/images/secondbg.png'
 import PageDivider from '../../shared/PageDivider'
 import TrainingDetails from './TrainingDetails/TrainingDetails'
 import TrainingForm from './TrainingForm'
-
+import {useParams} from 'react-router-dom'
+import useAxios from 'axios-hooks'
+import {IEventDto} from '../../../models/IEventsDto'
+import {Grid} from '@material-ui/core'
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
@@ -15,24 +18,40 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
+interface ID {
+  id: any
+}
 const TrainingDetailsPage = () => {
   const classes = useStyles()
+  const {id} = useParams<ID>()
+  const [{data, loading, error}, refetch] = useAxios<IEventDto>({
+    url: `/event/${id}`,
+    method: 'GET',
+  })
+
   return (
     <>
-      <div className={classes.root}>
-        <TopPage
-          title="JavaScript Internship"
-          subTitle="Start NOW"
-          info="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-          imageUrl={banner2}
-        />
-      </div>
-      <div>
-        <PageDivider id="training-detail" title="Training Details" />
-        <TrainingDetails />
+      <Grid
+        container
+        direction="column"
+        justify="space-between"
+        alignItems="center"
+      >
+        <Grid item xs={12}>
+          <TopPage
+            title={data?.eventType?.name}
+            subTitle="Start NOW"
+            info={data?.eventType?.description}
+            imageUrl={banner2}
+          />
+        </Grid>
+        <Grid item xs={12}>
+          <PageDivider id="training-detail" title="Training Details" />
+          <TrainingDetails />
 
-        <TrainingForm />
-      </div>
+          <TrainingForm />
+        </Grid>
+      </Grid>
     </>
   )
 }

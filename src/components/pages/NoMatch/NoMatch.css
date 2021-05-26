@@ -1,0 +1,49 @@
+.noMatch {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  height: 92vh;
+  color: #1E5A70;
+}
+
+.noMatch h1,
+.noMatch h2 {
+  margin: 0;
+}
+
+.noMatch h1 {
+  font-size: 3.4rem;
+}
+
+.noMatch h2 {
+  margin: 2.4rem 0;
+  font-size: 2rem;
+}
+
+.noMatch .link {
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+
+@keyframes colorNoMatchHover {
+	from {color: #1E5A70;}
+	to {color: #41C1F0;}
+}
+
+@keyframes colorNoMatchLink {
+	from {color: #41C1F0;}
+	to {color: #1E5A70;}
+}
+
+.noMatch .link:link,
+.noMatch .link:visited {
+	animation: colorNoMatchLink 500ms;
+	text-decoration: none;
+	color: #1E5A70;
+}
+
+.noMatch .link:active,
+.noMatch .link:hover {
+	animation: colorNoMatchHover 500ms;
+	color: #41C1F0;
+}

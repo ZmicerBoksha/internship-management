@@ -1,0 +1,115 @@
+.footer {
+  background: #1E5A70;
+}
+
+.footer nav {
+  width: auto;
+}
+
+.footer ul {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 0;
+  width: auto;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  transform: translateX(0%);
+  list-style-type: none;
+  z-index: 0;
+}
+
+.footer li {
+  line-height: 1.6;
+}
+
+.footer li a {
+  font-size: 24px;
+}
+
+.footer .wrap {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  width: 60%;
+  margin: 0 auto;
+  padding: 1.8rem 0;
+}
+
+.footer .copy {
+  font-size: 20px;
+}
+
+/* == Screen <= 1200px == */
+@media screen and (max-width: 76.341em) {
+  .footer .wrap {
+    width: 70%;
+  }
+
+  .footer li a {
+    font-size: 20px;
+  }
+}
+
+/* == Screen <= 992px == */
+@media screen and (max-width: 63.108em) {
+  .footer .wrap {
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .footer .wrap div:nth-child(1) {
+    width: 100%;
+    padding: 2.6rem 0;
+  }
+}
+
+/* == Screen <= 992px == */
+@media screen and (max-width: 36.64rem) {
+  .footer .wrap {
+    flex-direction: column;
+  }
+  
+  .footer .Navigation {
+    max-width: initial;
+  }
+
+  div:nth-of-type(2) {
+    padding: 0.5rem 0;
+  }
+}
+
+.footer .copy {
+  padding: 0.5rem;
+  text-align: center;
+  font-size: 16px;
+  border-top: 1px solid #41C1F0;
+  color: #fff;
+}
+
+/* Анимация ссылок  */
+@keyframes colorAnimHover {
+	from {color: #fff;}
+	to {color: #41C1F0;}
+}
+
+@keyframes colorAnimLink {
+	from {color: #41C1F0;}
+	to {color: #fff;}
+}
+
+.link:link,
+.link:visited {
+	animation: colorAnimLink 500ms;
+	text-decoration: none;
+	color: #fff;
+}
+
+.link:active,
+.link:hover {
+	animation: colorAnimHover 500ms;
+	color: #41C1F0;
+}

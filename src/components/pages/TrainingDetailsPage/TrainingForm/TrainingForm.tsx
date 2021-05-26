@@ -2,27 +2,46 @@ import React, {useState} from 'react'
 import {makeStyles, Theme, createStyles} from '@material-ui/core/styles'
 import {Controller, useForm} from 'react-hook-form'
 import InputMask from 'react-input-mask'
-import {Button, Grid, TextField, Typography, useTheme} from '@material-ui/core'
+import {
+  Button,
+  FormControl,
+  FormControlLabel,
+  Grid,
+  InputLabel,
+  MenuItem,
+  Select,
+  Snackbar,
+  TextField,
+  Typography,
+  useTheme,
+} from '@material-ui/core'
 import {KeyboardDatePicker} from '@material-ui/pickers'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import {DateFormat, DateFormatDot} from '../../../constants/DateFormats'
 import {format, isValid} from 'date-fns'
 
+import useAxios from 'axios-hooks'
+import {useParams} from 'react-router'
+import {Alert} from '@material-ui/lab'
+
 interface IFormInput {
-  firstName: string
-  lastName: string
-  patronymic: string
-  phoneNumber: string
-  birthday: string
-  email: string
-  skype: string
-  country: string
   city: string
-  technology: string
-  engLevel: string
-  degree: string
-  graduationDate: Date
-  experience: string
+  country: string
+  englishLevel: string
+  email: string
+  faculty: string
+  firstName: string
+  graduationDate: string
+  institution: string
+  lastName: string
+  mainSkill: string
+  otherSkills: string
+  phone: string
+  skype: string
+  speciality: string
+}
+interface ID {
+  id: any
 }
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -51,6 +70,35 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 const TrainingForm = () => {
+  const {id} = useParams<ID>()
+  const classes = useStyles()
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.up('sm'))
+
+  const [{data: formData, loading, error: formError}, executePost] = useAxios(
+    {
+      url: `/candidate`,
+      method: 'POST',
+    },
+    {manual: true}
+  )
+  const [englevel, setEnglevel] = React.useState('')
+
+  const handleChange = (event: any) => {
+    setEnglevel(event.target.value)
+  }
+  const [open, setOpen] = useState(false)
+  const handleClick = () => {
+    setOpen(true)
+  }
+  const handleClose = (event?: React.SyntheticEvent, reason?: string) => {
+    if (reason === 'clickaway') {
+      return
+    }
+
+    setOpen(false)
+  }
+
   const {
     getValues,
     register,
@@ -58,10 +106,15 @@ const TrainingForm = () => {
     handleSubmit,
     errors,
   } = useForm<IFormInput>()
-  const onSubmit = (data: IFormInput) => console.log(data)
-  const classes = useStyles()
-  const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.up('sm'))
+
+  const onSubmit = (formData: IFormInput, e: any) => {
+    executePost({
+      data: {
+        ...formData,
+      },
+    }),
+      e.target.reset()
+  }
 
   return (
     <div
@@ -103,7 +156,7 @@ const TrainingForm = () => {
               </Typography>
             )}
           </Grid>
-          <Grid item xs={12} sm={6}>
+          {/* <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
               label="Patronymic"
@@ -117,7 +170,7 @@ const TrainingForm = () => {
                 Please fill the form
               </Typography>
             )}
-          </Grid>
+          </Grid> */}
 
           <Grid item xs={12} sm={6}>
             <TextField
@@ -136,11 +189,11 @@ const TrainingForm = () => {
             )}
           </Grid>
           <Grid item xs={12} sm={6}>
-            <InputMask mask="(\9\9\8) 99 999-99-99">
+            <InputMask mask="+999999999999">
               {() => (
                 <TextField
                   fullWidth
-                  name="phoneNumber"
+                  name="phone"
                   inputRef={register({required: true})}
                   id="outlined"
                   label={'PhoneNumber'}
@@ -148,7 +201,8 @@ const TrainingForm = () => {
                 />
               )}
             </InputMask>
-            {errors.phoneNumber && (
+
+            {errors.phone && (
               <Typography component="span" color="error">
                 Please fill the form
               </Typography>
@@ -202,28 +256,54 @@ const TrainingForm = () => {
           <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
-              label="Technology"
-              name="technology"
+              label="Speciality"
+              name="speciality"
               inputRef={register({required: true})}
               variant="outlined"
               fullWidth
             />
-            {errors.technology && (
+            {errors.speciality && (
               <Typography component="span" color="error">
                 Please fill the form
               </Typography>
             )}
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField
+            {/* <TextField
               id="outlined-basic"
               label="English Level"
-              name="engLevel"
+              name="englishLevel"
               inputRef={register({required: true})}
               variant="outlined"
               fullWidth
-            />
-            {errors.engLevel && (
+            /> */}
+
+            <FormControl fullWidth variant="outlined">
+              <InputLabel id="demo-simple-select-outlined-label">
+                English Level
+              </InputLabel>
+              <Controller
+                as={
+                  <Select
+                    fullWidth
+                    labelId="demo-simple-select-outlined-label"
+                    id="demo-simple-select-outlined"
+                    // value={englevel}
+                    // onChange={handleChange}
+                    label="English Level"
+                  >
+                    <MenuItem value="ELEMENTARY">Elementary</MenuItem>
+                    <MenuItem value="INTERMIDATE">Intermidate</MenuItem>
+                    <MenuItem value="ADVANCED">Advanced</MenuItem>
+                  </Select>
+                }
+                name="englishLevel"
+                control={control}
+                rules={{required: true}}
+                // onChange={([selected]) => selected}
+              />
+            </FormControl>
+            {errors.englishLevel && (
               <Typography component="span" color="error">
                 Please fill the form
               </Typography>
@@ -232,13 +312,29 @@ const TrainingForm = () => {
           <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
-              label="Degree"
-              name="degree"
+              label="Institution"
+              name="institution"
               inputRef={register({required: true})}
               variant="outlined"
               fullWidth
             />
-            {errors.degree && (
+
+            {errors.institution && (
+              <Typography component="span" color="error">
+                Please fill the form
+              </Typography>
+            )}
+          </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="outlined-basic"
+              label="faculty"
+              name="faculty"
+              inputRef={register({required: true})}
+              variant="outlined"
+              fullWidth
+            />
+            {errors.faculty && (
               <Typography component="span" color="error">
                 Please fill the form
               </Typography>
@@ -271,21 +367,38 @@ const TrainingForm = () => {
               </Typography>
             )}
           </Grid>
+
           <Grid item xs={12} sm={6}>
             <TextField
               id="outlined-basic"
-              label="Work Experience"
-              name="experience"
+              label="mainSkill"
+              name="mainSkill"
               inputRef={register({required: true})}
               variant="outlined"
               fullWidth
             />
-            {errors.experience && (
+            {errors.mainSkill && (
               <Typography component="span" color="error">
                 Please fill the form
               </Typography>
             )}
           </Grid>
+          <Grid item xs={12} sm={6}>
+            <TextField
+              id="outlined-basic"
+              label="otherSkills"
+              name="otherSkills"
+              inputRef={register({required: true})}
+              variant="outlined"
+              fullWidth
+            />
+            {errors.otherSkills && (
+              <Typography component="span" color="error">
+                Please fill the form
+              </Typography>
+            )}
+          </Grid>
+
           <Grid item xs={12} container alignItems="center" justify="center">
             <Button
               className={classes.button}
@@ -297,6 +410,10 @@ const TrainingForm = () => {
           </Grid>
         </Grid>
       </form>
+      {formError && handleClick()}
+      <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+        <Alert severity="error">Something went wrong Please try again!</Alert>
+      </Snackbar>
     </div>
   )
 }
